@@ -8,15 +8,10 @@
   "boot": "auto",
   "host_network": true,
   "map": ["config:rw", "addons:rw"],
-  "services": [
-    "remote.lirc"
-  ],
   "ports": {
     "8765/tcp": "8765"
   },
   "arch": ["aarch64"],
-  "options": {},
-  "schema": {},
   "privileged": [
     "SYS_RAWIO",
     "SYS_ADMIN"
