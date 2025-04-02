@@ -21,14 +21,12 @@ COPY lirc_options.conf /usr/etc/lirc/lirc_options.conf
 COPY lircd.conf.d/salon.lircd.conf /usr/etc/lirc/lircd.conf.d/salon.lircd.conf
 
 # Cloner et installer LIRC Web
-RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web
-WORKDIR /opt/lirc_web
-RUN npm install
-RUN npm install -g lirc_web
+RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web \
+    && cd /opt/lirc_web \
+    && npm install
 
 # Exposer le port utilisé par LIRC Web
 EXPOSE 3000
 
 # Commande de démarrage LIRC et LIRC Web en parallèle
-CMD /usr/sbin/lircd --nodaemon & lirc_web
-# node /opt/lirc_web/app.js
+CMD /usr/sbin/lircd --nodaemon & node /opt/lirc_web/app.js
