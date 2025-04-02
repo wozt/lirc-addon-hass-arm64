@@ -7,7 +7,7 @@
   "startup": "application",
   "boot": "auto",
   "host_network": true,
-  "map": ["config:rw", "addons:rw"],
+  "map": ["config:rw", "addons:rw", "ssl"],
   "ports": {
     "8765/tcp": "8765"
   },
