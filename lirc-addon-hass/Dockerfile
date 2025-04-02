@@ -24,6 +24,7 @@ COPY lircd.conf.d/salon.lircd.conf /usr/etc/lirc/lircd.conf.d/salon.lircd.conf
 RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web
 WORKDIR /opt/lirc_web
 RUN npm install
+RUN npm install -g lirc_web
 
 # Exposer le port utilisé par LIRC Web
 EXPOSE 3000
