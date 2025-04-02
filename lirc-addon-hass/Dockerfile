@@ -1,12 +1,10 @@
-# Utiliser une image de base compatible ARM (aarch64)
 FROM arm64v8/alpine:latest
 
-# Vérifier l'accès au périphérique USB (facultatif, pour déboguer)
-RUN ls -l /dev/bus/usb/001/005 || echo "Périphérique USB non détecté"
-
-
 # Installer les paquets nécessaires pour la compilation et LIRC
-RUN apk add --no-cache gcc build-base libusb-dev lirc-dev linux-headers git lirc
+RUN apk add --no-cache gcc build-base libusb-dev lirc-dev linux-headers git lirc nodejs npm
+
+# Vérifier l'accès au périphérique USB (facultatif, pour déboguer)
+RUN ls -l /dev/bus/usb/001/004 || echo "Périphérique USB non détecté"
 
 # Cloner le projet tiqiaa_lirc depuis GitHub
 RUN git clone https://github.com/cclairmont/tiqiaa_lirc /opt/tiqiaa_lirc
@@ -22,5 +20,13 @@ COPY lircd.conf /usr/lirc/lircd.conf
 COPY lirc_options.conf /usr/etc/lirc/lirc_options.conf
 COPY lircd.conf.d/salon.lircd.conf /usr/etc/lirc/lircd.conf.d/salon.lircd.conf
 
-# Commande de démarrage LIRC
-CMD ["/usr/sbin/lircd", "--nodaemon"]
+# Cloner et installer LIRC Web
+RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web
+WORKDIR /opt/lirc_web
+RUN npm install
+
+# Exposer le port utilisé par LIRC Web
+EXPOSE 3000
+
+# Commande de démarrage LIRC et LIRC Web en parallèle
+CMD /usr/sbin/lircd --nodaemon & node /opt/lirc_web/app.js
