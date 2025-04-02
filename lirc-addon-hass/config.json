@@ -9,7 +9,7 @@
   "host_network": true,
   "map": ["config:rw", "addons:rw"],
   "ports": {
-    "8765/tcp": "8765"
+    "8765/tcp": "8765",
     "3000/tcp": "3000"
   },
   "arch": ["aarch64"],
