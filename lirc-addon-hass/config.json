@@ -1,5 +1,5 @@
 {
-  "name": "LIRC",
+  "name": "LIRCcustom",
   "version": "1.0",
   "slug": "lirc",
   "description": "LIRC (Linux Infrared Remote Control) Add-on for Home Assistant",
