@@ -28,5 +28,9 @@ RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web \
 # Exposer le port utilisé par LIRC Web
 EXPOSE 3000
 
+COPY runrun.sh /run.sh
+RUN chmod +x /run.sh
+CMD ["/run.sh"]
+
 # Commande de démarrage LIRC et LIRC Web en parallèle
-CMD /usr/sbin/lircd --nodaemon & node /opt/lirc_web/app.js
+#CMD /usr/sbin/lircd --nodaemon & node /opt/lirc_web/app.js
