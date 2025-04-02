@@ -30,4 +30,5 @@ RUN npm install -g lirc_web
 EXPOSE 3000
 
 # Commande de démarrage LIRC et LIRC Web en parallèle
-CMD /usr/sbin/lircd --nodaemon & node /opt/lirc_web/app.js
+CMD /usr/sbin/lircd --nodaemon & lirc_web
+# node /opt/lirc_web/app.js
