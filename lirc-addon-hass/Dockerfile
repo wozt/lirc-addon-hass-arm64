@@ -15,10 +15,10 @@ RUN cd /opt/tiqiaa_lirc \
     && mv tiqlibusb.so /usr/lib/lirc/plugins/
 
 # Copier les fichiers de configuration dans le conteneur
-COPY lircmd.conf /usr/etc/lirc/lircmd.conf
-COPY lircd.conf /usr/lirc/lircd.conf
-COPY lirc_options.conf /usr/etc/lirc/lirc_options.conf
-COPY lircd.conf.d/salon.lircd.conf /usr/etc/lirc/lircd.conf.d/salon.lircd.conf
+COPY lircmd.conf /etc/lirc/lircmd.conf
+COPY lircd.conf /etc/lirc/lircd.conf
+COPY lirc_options.conf /etc/lirc/lirc_options.conf
+COPY lircd.conf.d/salon.lircd.conf /etc/lirc/lircd.conf.d/salon.lircd.conf
 
 # Cloner et installer LIRC Web
 RUN git clone https://github.com/alexbain/lirc_web.git /opt/lirc_web \
