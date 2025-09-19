@@ -9,16 +9,20 @@
   "host_network": true,
   "map": ["config:rw", "addons:rw"],
   "ports": {
-    "8765/tcp": "8765",
-    "3000/tcp": "3000"
+    "8765/tcp": 8765,
+    "3000/tcp": 3000
   },
   "arch": ["aarch64"],
   "privileged": [
     "SYS_RAWIO",
     "SYS_ADMIN"
   ],
-  "devices": [
-    "/dev/bus/usb/001/002:/dev/bus/usb/001/002:rwm"
-  ]
+  "udev": true,
+  "devices": [],
+  "options": {
+    "device": null
+  },
+  "schema": {
+    "device": "device?"
+  }
 }
-
