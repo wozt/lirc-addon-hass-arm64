@@ -1,7 +1,7 @@
 FROM arm64v8/alpine:latest
 
 # Installer les paquets nécessaires pour la compilation et LIRC
-RUN apk add --no-cache gcc build-base libusb-dev lirc-dev linux-headers git lirc nodejs npm
+RUN apk add --no-cache gcc build-base libusb-dev lirc-dev linux-headers git lirc nodejs npm bashio
 
 # Vérifier l'accès au périphérique USB (facultatif, pour déboguer)
 RUN ls -l /dev/bus/usb/001/002 || echo "Périphérique USB non détecté"
