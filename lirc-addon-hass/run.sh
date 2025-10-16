@@ -1,5 +1,5 @@
 docker run -d \
-  --name lirc-addon-test \
+  --name lirc-addon-hass-arm64 \
   --privileged \
   --device "$(lsusb | grep 'Silicon Labs Tview' | awk '{printf "/dev/bus/usb/%03d/%03d\n",$2,$4}' | sed 's/://')":/dev/bus/usb/001/003:rwm \
   -p 8765:8765 \
