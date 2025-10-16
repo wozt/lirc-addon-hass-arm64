@@ -4,8 +4,7 @@ FROM arm64v8/alpine:latest
 RUN apk add --no-cache gcc build-base libusb-dev lirc-dev linux-headers git lirc nodejs npm
 
 # Vérifier l'accès au périphérique USB (facultatif, pour déboguer)
-RUN echo "$(lsusb | grep 'Silicon Labs Tview' | awk '{printf "/dev/bus/us
-b/%03d/%03d\n",$2,$4}' | sed 's/://')" || echo "Périphérique USB non détecté"
+RUN echo "$(lsusb | grep 'Silicon Labs Tview' | awk '{printf "/dev/bus/usb/%03d/%03d\n",$2,$4}' | sed 's/://')" || echo "Périphérique USB non détecté"
 
 # Cloner le projet tiqiaa_lirc depuis GitHub
 RUN git clone https://github.com/cclairmont/tiqiaa_lirc /opt/tiqiaa_lirc
